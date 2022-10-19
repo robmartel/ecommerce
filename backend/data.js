@@ -30,7 +30,7 @@ const data = {
             category: 'Rounds',
             image: '/images/p3.jpg',
             price: 75,
-            countInStock: 15,
+            countInStock: 0,
             brand: 'Nike',
             rating: 4.5,
             numReviews: 14,
