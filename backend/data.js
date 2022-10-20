@@ -1,6 +1,7 @@
 const data = {
     products: [
         {
+            _id: '1',
             name: 'Hi',
             slug: 'hi-laser-round',
             category: 'Rounds',
@@ -13,6 +14,7 @@ const data = {
             description: 'high quality product',
         },
         {
+            _id: '2',
             name: 'The Bunkie',
             slug: 'bunkie-laser-round',
             category: 'Rounds',
@@ -25,6 +27,7 @@ const data = {
             description: 'high quality product',
         },
         {
+            _id: '3',
             name: 'Gone Fishing',
             slug: 'fishing-laser-round',
             category: 'Rounds',
@@ -37,6 +40,7 @@ const data = {
             description: 'high quality product',
         },
         {
+            _id: '4',
             name: 'Hello',
             slug: 'hello-laser-round',
             category: 'Rounds',
