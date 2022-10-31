@@ -13,7 +13,7 @@ const data = {
             email: 'user@example.com',
             password: bcrypt.hashSync('123456'),
             isAdmin: false,
-        }
+        },
     ],
     products: [
         {
@@ -31,7 +31,7 @@ const data = {
         },
         {
             //_id: '2',
-            name: 'The Bunkie',
+            name: 'Bunkie',
             slug: 'bunkie-laser-round',
             category: 'Rounds',
             image: '/images/p2.jpg',
