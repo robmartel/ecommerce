@@ -6,6 +6,7 @@ import User from '../models/userModel.js';
 const seedRouter = express.Router();
 
 seedRouter.get('/', async (req, res) => {
+    //.remove may have to be changed to .deleteOne as .remove has been deprecated
     await Product.remove({});
     const createdProducts = await Product.insertMany(data.products);
     await User.deleteOne({});
