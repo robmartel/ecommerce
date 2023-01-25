@@ -5,11 +5,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MessageBox from '../components/MessageBox';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
-import Product from '../components/Product';
 
 export default function CartScreen() {
     const navigate = useNavigate();
