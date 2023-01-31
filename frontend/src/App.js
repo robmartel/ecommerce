@@ -25,6 +25,9 @@ import { getError } from './utils';
 import axios from 'axios';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
+import ProtectedRoutes from './components/ProtectedRoutes';
+import DashboardScreen from './screens/DashboardScreen';
+import AdminRoute from './components/AdminRoute';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -129,6 +132,22 @@ function App() {
                       Sign In{' '}
                     </Link>
                   )}
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropdown title="Admin" id="admin-nav-dropdown">
+                      <LinkContainer to="/admin/dashboard">
+                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/productlist">
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/orderlist">
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/userlist">
+                        <NavDropdown.Item>Users</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -145,7 +164,7 @@ function App() {
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>
-            {categories.map((category) => (
+            {/* {categories.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
                   to={`/search?category=${category}`}
@@ -154,7 +173,7 @@ function App() {
                   <Nav.Link>{category}</Nav.Link>
                 </LinkContainer>
               </Nav.Item>
-            ))}
+            ))} */}
           </Nav>
         </div>
         <main>
@@ -182,7 +201,10 @@ function App() {
               />
               <Route
                 path='/profile'
-                element={<ProfileScreen />}
+                element={
+                <ProtectedRoutes>
+                <ProfileScreen />
+                </ProtectedRoutes>}
               />
               <Route
                 path='/placeorder'
@@ -190,11 +212,17 @@ function App() {
               />
               <Route
                 path='/order/:id'
-                element={<OrderScreen />}
+                element={
+                  <ProtectedRoutes>
+                <OrderScreen />
+                </ProtectedRoutes>}
               />
               <Route
                 path='/orderhistory'
-                element={<OrderHistoryScreen />}
+                element={
+                <ProtectedRoutes>
+                <OrderHistoryScreen />
+                </ProtectedRoutes>}
               />
               <Route
                 path='/shipping'
@@ -204,6 +232,10 @@ function App() {
                 path='/payment'
                 element={<PaymentMethodScreen />}
               />
+
+              {/* Admin Routes */}
+              <Route path="/admin/dashboard" element={<AdminRoute><DashboardScreen /></AdminRoute>} />
+              
               <Route
                 path='/'
                 element={<HomeScreen />}
