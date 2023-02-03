@@ -47,12 +47,12 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get('/api/products/categories');
+        const { data } = await axios.get(`/api/products/categories`);
         setCategories(data);
-      } catch(err) {
+      } catch (err) {
         toast.error(getError(err));
       }
-    }
+    };
     fetchCategories();
   }, []);
 
@@ -160,7 +160,7 @@ function App() {
               : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
           }
         >
-          <Nav className='flex-column text-white w-100 p-2'>
+          <Nav className="flex-column text-white w-100 p-2">
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>

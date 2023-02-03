@@ -10,6 +10,8 @@ import Rating from '../components/Rating';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Button from 'react-bootstrap/Button';
+import Product from '../components/Product';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -244,6 +246,26 @@ export default function SearchScreen() {
                     </select>
                 </Col>
               </Row>
+              {products.length === 0 && (
+                <MessageBox>No Product Found</MessageBox>
+              )}
+              <Row>
+                {products.map((product) => (
+                    <Col sm={6} lg={4} className="mb-3" key={product._id}>
+                        <Product product={product}></Product>
+                    </Col>
+                ))}
+              </Row>
+
+              <div>
+                {[...Array(pages).keys()].map((x) => (
+                    <LinkContainer key={x + 1} className="mx-1" to={getFilterURL({ page: x + 1 })}>
+                        <Button className={Number(page) === x + 1 ? 'text-bold' : ''} variant="light">
+                            {x + 1}
+                        </Button>
+                    </LinkContainer>
+                ))}
+              </div>
             </>
           )}
         </Col>
