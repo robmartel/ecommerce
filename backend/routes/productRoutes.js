@@ -135,7 +135,6 @@ productRouter.get(
     const pageSize = query.pageSize || PAGE_SIZE;
     const page = query.page || 1;
     const category = query.category || '';
-    const brand = query.brand || '';
     const price = query.price || '';
     const rating = query.rating || '';
     const order = query.order || '';
@@ -162,13 +161,14 @@ productRouter.get(
     const priceFilter =
       price && price !== 'all'
         ? {
+            // 1-50
             price: {
-              $gte: Number(price.split('-')[0]), //$gte means greater than or equal to
+              $gte: Number(price.split('-')[0]),
               $lte: Number(price.split('-')[1]),
             },
           }
         : {};
-    const sortOder =
+    const sortOrder =
       order === 'featured'
         ? { featured: -1 }
         : order === 'lowest'

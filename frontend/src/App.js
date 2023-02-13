@@ -177,16 +177,16 @@ function App() {
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>
-            {/* {categories.map((category) => (
+            {categories.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
-                  to={`/search?category=${category}`}
+                  to={{pathname: '/search', search: `category=${category}`}}
                   onClick={() => setSidebarIsOpen(false)}
                 >
                   <Nav.Link>{category}</Nav.Link>
                 </LinkContainer>
               </Nav.Item>
-            ))} */}
+            ))}
           </Nav>
         </div>
         <main>
